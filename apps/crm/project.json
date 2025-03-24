@@ -29,6 +29,12 @@
       },
       "configurations": {
         "production": {
+          "sourceMap": {
+            "scripts": true,
+            "styles": false,
+            "hidden": false,
+            "vendor": false
+          },
           "budgets": [
             {
               "type": "initial",

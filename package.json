@@ -2,7 +2,9 @@
   "name": "@monorepo-angular/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "analyze": "nx build crm --configuration production --stats-json && webpack-bundle-analyzer dist/apps/crm/stats.json"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "~19.2.0",
@@ -13,6 +15,8 @@
     "@angular/platform-browser-dynamic": "~19.2.0",
     "@angular/router": "~19.2.0",
     "bootstrap": "^5.3.3",
+    "dayjs": "^1.11.13",
+    "moment": "^1.1.0",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },
@@ -37,6 +41,7 @@
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@types/jest": "^29.5.12",
+    "@types/moment": "^2.11.29",
     "@types/node": "18.16.9",
     "@typescript-eslint/utils": "^8.19.0",
     "angular-eslint": "^19.2.0",
@@ -53,6 +58,7 @@
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",
     "typescript": "~5.7.2",
-    "typescript-eslint": "^8.19.0"
+    "typescript-eslint": "^8.19.0",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }
