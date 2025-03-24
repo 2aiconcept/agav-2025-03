@@ -1,1 +1,14 @@
-<p>Ui works!</p>
+<div class="d-flex h-100">
+  <div class="p-3 text-bg-dark">
+    <div>
+      <ng-content select=".tr-connect"></ng-content>
+    </div>
+    <hr />
+    <div>
+      <ng-content select=".tr-nav"></ng-content>
+    </div>
+  </div>
+  <div class="flex-grow-1 p-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

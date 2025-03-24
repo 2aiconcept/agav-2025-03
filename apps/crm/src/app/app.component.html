@@ -1,2 +1,13 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<lib-ui title="mon titre">
+  <div class="tr-connect">
+    <button type="button" class="btn btn-primary me-3">Login</button>
+    <button type="button" class="btn btn-secondary">Sign up</button>
+    <button type="button" class="btn btn-secondary">Log Out</button>
+    <hr />
+    ici on affichera des dates
+  </div>
+  <lib-vertical-navbar
+    class="tr-nav"
+    [navItems]="navItems"
+  ></lib-vertical-navbar>
+</lib-ui>
