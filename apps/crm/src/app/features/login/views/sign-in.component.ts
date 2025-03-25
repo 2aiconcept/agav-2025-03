@@ -26,9 +26,7 @@ export class SignInComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern(
-            '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/'
-          ),
+          Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/),
         ]),
       ],
       password: ['', Validators.required],

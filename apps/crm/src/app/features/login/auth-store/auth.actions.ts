@@ -32,3 +32,8 @@ export const signUpFailure = createAction(
   '[Auth] SignUp Failure',
   props<{ error: string }>()
 );
+
+export const signUpSuccess = createAction(
+  '[Auth] Sign Up Success',
+  props<{ accessToken: string; user: string }>()
+);

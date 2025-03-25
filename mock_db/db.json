@@ -4,6 +4,16 @@
       "email": "c.gueroult@2ai-group.com",
       "password": "$2a$10$SmTHP2JRk1smUOWRYJ0BOO8MR9DxU/WfPAbdDeZLCni4DVadUgL6e",
       "id": 1
+    },
+    {
+      "email": "christophegueroult@gmail.com",
+      "password": "$2a$10$XPYJlQsbTsT/n2HlHxOUa.1/J.P3rmGm/9Y78du4IlUTuGDKsnFsm",
+      "id": 2
+    },
+    {
+      "email": "contact@2ai-group.com",
+      "password": "$2a$10$O8a819HEKOygWd6UBV.R2uWuVDPVaPIHNtxcKcOXYv5XFPe2skc6K",
+      "id": 3
     }
   ],
   "customers": [

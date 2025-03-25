@@ -49,7 +49,11 @@ export class AuthEffects {
       ofType(AuthActions.signUp),
       switchMap(({ email, password }) =>
         this.authService.signUp({ email, password }).pipe(
-          tap(() => this.router.navigate(['auth', 'sign-in'])),
+          map(({ accessToken, user }) => {
+            this.router.navigate(['auth', 'sign-in']); //  Redirection
+            // envoie d'un mail avec code
+            return AuthActions.signUpSuccess({ accessToken, user }); //  Retourne une action valide
+          }),
           catchError((error) =>
             of(AuthActions.signUpFailure({ error: error.message }))
           )
