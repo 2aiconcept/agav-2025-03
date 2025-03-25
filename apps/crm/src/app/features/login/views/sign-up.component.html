@@ -1,1 +1,40 @@
-<p>sign-up works!</p>
+<div class="container">
+  <h3 class="mb-3">Create your account</h3>
+</div>
+<form [formGroup]="form" class="container" (ngSubmit)="signUp()">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      formControlName="email"
+    />
+    <div
+      *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+      class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3"
+    >
+      Veuillez saisir une adresse email valide
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="Password" class="form-label">Password</label>
+    <input
+      type="text"
+      class="form-control"
+      id="Password"
+      formControlName="password"
+    />
+    <div
+      *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+      class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3"
+    >
+      Veuillez saisir 5 caractères minimum
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+    Submit
+  </button>
+</form>
