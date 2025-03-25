@@ -57,4 +57,14 @@ export class AuthEffects {
       )
     )
   );
+
+  //   effect to redirect on route sign-in after logout
+  redirectToLogin$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logout),
+        tap(() => this.router.navigate(['auth', 'sign-in'])) // Redirection après connexion
+      ),
+    { dispatch: false } // Ne déclenche pas d'action supplémentaire
+  );
 }
