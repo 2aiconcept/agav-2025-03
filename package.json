@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "analyze": "nx build crm --configuration production --stats-json && webpack-bundle-analyzer dist/apps/crm/stats.json"
+    "analyze": "nx build crm --configuration production --stats-json && webpack-bundle-analyzer dist/apps/crm/stats.json",
+    "json-server": "node apps/crm/server.js"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,8 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-preset-angular": "~14.4.0",
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
     "nx": "20.6.2",
     "prettier": "^2.6.2",
     "ts-jest": "^29.1.0",

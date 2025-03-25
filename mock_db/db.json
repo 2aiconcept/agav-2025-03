@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "email": "c.gueroult@2ai-group.com",
+      "password": "$2a$10$SmTHP2JRk1smUOWRYJ0BOO8MR9DxU/WfPAbdDeZLCni4DVadUgL6e",
+      "id": 1
+    }
+  ],
+  "customers": [],
+  "orders": []
+}
