@@ -16,7 +16,12 @@ export class AuthService {
   public signIn(credentials: {
     email: string;
     password: string;
-  }): Observable<any> {
-    return this.http.post<any>(`${this.url}/login`, credentials);
+  }): Observable<unknown> {
+    return this.http.post<unknown>(`${this.url}/login`, credentials);
+  }
+
+  // signup
+  signUp(item: unknown): Observable<unknown> {
+    return this.http.post(`${this.url}/register`, item);
   }
 }
