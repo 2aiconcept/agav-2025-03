@@ -6,6 +6,34 @@
       "id": 1
     }
   ],
-  "customers": [],
-  "orders": []
+  "customers": [
+    {
+      "state": "ACTIVE",
+      "name": "Capgemini",
+      "contact": "contact@capgemini.io",
+      "id": 1
+    }
+  ],
+  "orders": [
+    {
+      "unitPrice": 500,
+      "nbOfDays": 2,
+      "vat": 20,
+      "state": "CANCELED",
+      "type": "formation",
+      "customer": "Atos",
+      "comment": "un commentaire",
+      "id": 1
+    },
+    {
+      "unitPrice": 500,
+      "nbOfDays": 2,
+      "vat": 20,
+      "state": "OPTION",
+      "type": "formation",
+      "customer": "Capgemini",
+      "comment": "un commentaire",
+      "id": 2
+    }
+  ]
 }
