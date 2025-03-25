@@ -6,7 +6,12 @@
     <button type="button" class="btn btn-secondary" (click)="goToSignUp()">
       Sign up
     </button>
-    <button type="button" class="btn btn-secondary" (click)="signOut()">
+    <button
+      *ngIf="isAuthenticated$ | async"
+      type="button"
+      class="btn btn-secondary"
+      (click)="signOut()"
+    >
       Log Out
     </button>
     <hr />
