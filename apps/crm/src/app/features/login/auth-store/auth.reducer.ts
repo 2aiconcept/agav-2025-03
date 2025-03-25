@@ -5,14 +5,12 @@ export interface AuthState {
   user: any | null;
   token: string | null;
   error: string | null;
-  accountVerifed: boolean | null;
 }
 
 const initialState: AuthState = {
   user: null,
   token: null,
   error: null,
-  accountVerifed: null,
 };
 
 export const authReducer = createReducer(
