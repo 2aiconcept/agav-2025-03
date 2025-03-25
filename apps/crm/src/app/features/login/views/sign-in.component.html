@@ -1,1 +1,30 @@
-<p>sign-in works!</p>
+<div class="container">
+  <h3 class="mb-3">Connection</h3>
+</div>
+<form [formGroup]="form" (ngSubmit)="signIn()" class="container">
+  <div class="mb-3">
+    <label for="Email" class="form-label">Email</label>
+    <input
+      formControlName="email"
+      type="text"
+      class="form-control"
+      id="Email"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="Password" class="form-label">Password</label>
+    <div class="input-group">
+      <input
+        formControlName="password"
+        type="text"
+        class="form-control"
+        id="Password"
+      />
+    </div>
+  </div>
+
+  <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
+    Submit
+  </button>
+</form>

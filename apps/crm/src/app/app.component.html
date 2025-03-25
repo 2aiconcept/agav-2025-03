@@ -1,8 +1,14 @@
 <lib-ui title="mon titre">
   <div class="tr-connect">
-    <button type="button" class="btn btn-primary me-3">Login</button>
-    <button type="button" class="btn btn-secondary">Sign up</button>
-    <button type="button" class="btn btn-secondary">Log Out</button>
+    <button type="button" class="btn btn-primary me-3" (click)="goToSignIn()">
+      Login
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="goToSignUp()">
+      Sign up
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="signOut()">
+      Log Out
+    </button>
     <hr />
     <p>Date avec moment : {{ date }}</p>
     <p>Date avec day js : {{ date2 }}</p>
