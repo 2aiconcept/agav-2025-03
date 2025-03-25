@@ -7,10 +7,13 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as AuthActions from './features/login/auth-store/auth.actions';
 import { Observable } from 'rxjs';
-import { selectIsAuthenticated } from './features/login/auth-store/auth.selectors';
-import { AsyncPipe, NgIf } from '@angular/common';
+import {
+  selectAuthEmail,
+  selectIsAuthenticated,
+} from './features/login/auth-store/auth.selectors';
+import { AsyncPipe } from '@angular/common';
 @Component({
-  imports: [UiComponent, VerticalNavbarComponent, AsyncPipe, NgIf],
+  imports: [UiComponent, VerticalNavbarComponent, AsyncPipe],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -23,6 +26,7 @@ export class AppComponent {
   isAuthenticated$: Observable<boolean> = this.store.select(
     selectIsAuthenticated
   );
+  emailUser$: Observable<string> = this.store.select(selectAuthEmail);
   navItems: NavItems[] = [
     {
       route: 'orders',
