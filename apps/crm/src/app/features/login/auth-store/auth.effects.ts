@@ -42,4 +42,19 @@ export class AuthEffects {
       ),
     { dispatch: false } // Ne déclenche pas d'action supplémentaire
   );
+
+  //   signUp
+  signUp$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.signUp),
+      switchMap(({ email, password }) =>
+        this.authService.signUp({ email, password }).pipe(
+          tap(() => this.router.navigate(['auth', 'sign-in'])),
+          catchError((error) =>
+            of(AuthActions.signUpFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
 }
