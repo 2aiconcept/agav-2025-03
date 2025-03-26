@@ -27,8 +27,8 @@
         <td>{{ item.type }}</td>
         <td>{{ item.nbOfDays }}</td>
         <td>{{ item.unitPrice | currency }}</td>
-        <td>{{ item }}</td>
-        <td>{{ item }}</td>
+        <td>{{ item | total }}</td>
+        <td>{{ item | total : 'incVat' }}</td>
 
         <td>
           <select

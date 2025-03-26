@@ -9,10 +9,11 @@ import { StateOrder } from '../enums/state-order';
 import { Order } from '../models/order';
 import { FormsModule } from '@angular/forms';
 import { StateDirective } from '../../shared/directives/state.directive';
+import { TotalPipe } from '../../shared/pipes/total.pipe';
 
 @Component({
   selector: 'app-list-orders',
-  imports: [CommonModule, FormsModule, StateDirective],
+  imports: [CommonModule, FormsModule, StateDirective, TotalPipe],
   templateUrl: './list-orders.component.html',
   styleUrl: './list-orders.component.css',
 })
