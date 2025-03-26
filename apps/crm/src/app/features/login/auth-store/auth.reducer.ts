@@ -16,8 +16,6 @@ const initialState: AuthState = {
 export const authReducer = createReducer(
   initialState,
   on(AuthActions.loginSuccess, (state, { user, token }) => {
-    localStorage.setItem('token', token); // Enregistre le token dans localStorage
-    localStorage.setItem('user', JSON.stringify(user)); // Enregistre l'utilisateur
     return {
       ...state,
       user,
@@ -27,8 +25,6 @@ export const authReducer = createReducer(
   }),
   on(AuthActions.loginFailure, (state, { error }) => ({ ...state, error })),
   on(AuthActions.logout, () => {
-    localStorage.removeItem('token'); // Supprime le token à la déconnexion
-    localStorage.removeItem('user');
     return initialState;
   })
 );

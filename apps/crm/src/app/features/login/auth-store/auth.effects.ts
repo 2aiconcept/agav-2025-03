@@ -19,12 +19,15 @@ export class AuthEffects {
       ofType(AuthActions.login),
       switchMap(({ email, password }) =>
         this.authService.signIn({ email, password }).pipe(
-          map((user) =>
-            AuthActions.loginSuccess({
+          map((user) => {
+            // Enregistre le token et l'utilisateur dans le localStorage ICI (dans l'Effect)
+            localStorage.setItem('token', user.accessToken);
+            localStorage.setItem('user', JSON.stringify(user.user));
+            return AuthActions.loginSuccess({
               user: user.user,
               token: user.accessToken,
-            })
-          ),
+            });
+          }),
           catchError((error) =>
             of(AuthActions.loginFailure({ error: error.message }))
           )
@@ -42,24 +45,32 @@ export class AuthEffects {
       ),
     { dispatch: false } // Ne déclenche pas d'action supplémentaire
   );
+  //   Pourquoi dispatch: false ?
+
+  //   Un Effect doit normalement renvoyer une nouvelle action (map()).
+  //   Mais ici, on ne veut pas déclencher une nouvelle action, juste exécuter la redirection.
+  //   tap() est utilisé au lieu de map(), car on n’a pas besoin de modifier le flux de données.
+  //   Si on ne mettait pas dispatch: false, Angular attendrait une action de sortie et l’Effect ne fonctionnerait pas correctement.
 
   //   signUp
-  signUp$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.signUp),
-      switchMap(({ email, password }) =>
-        this.authService.signUp({ email, password }).pipe(
-          map(({ accessToken, user }) => {
-            this.router.navigate(['auth', 'sign-in']); //  Redirection
-            // envoie d'un mail avec code
-            return AuthActions.signUpSuccess({ accessToken, user }); //  Retourne une action valide
-          }),
-          catchError((error) =>
-            of(AuthActions.signUpFailure({ error: error.message }))
+  signUp$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.signUp),
+        switchMap(({ email, password }) =>
+          this.authService.signUp({ email, password }).pipe(
+            tap(() => {
+              this.router.navigate(['auth', 'sign-in']); //  Redirection
+              // envoie d'un mail avec code
+              // return AuthActions.signUpSuccess({ accessToken, user }); //  Retourne une action valide
+            }),
+            catchError((error) =>
+              of(AuthActions.signUpFailure({ error: error.message }))
+            )
           )
         )
-      )
-    )
+      ),
+    { dispatch: false } // Ne déclenche pas d'action supplémentaire
   );
 
   //   effect to redirect on route sign-in after logout
@@ -91,5 +102,18 @@ export class AuthEffects {
         })
       ),
     { dispatch: false } // On ne déclenche pas une nouvelle action ici
+  );
+
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logout),
+        tap(() => {
+          // Supprime le token et l'utilisateur du localStorage ici
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+        })
+      ),
+    { dispatch: false } // Parce que mon effet Ne déclenche pas d'action en sortie
   );
 }

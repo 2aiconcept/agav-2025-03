@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, DoCheck } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -20,7 +20,6 @@ export class SignUpComponent implements OnInit {
   private store = inject(Store);
   form!: FormGroup;
 
-  // utiliser la méthode signup() de AuthService
   signUp() {
     const user = this.form.value;
     // console.log(user);
@@ -42,4 +41,8 @@ export class SignUpComponent implements OnInit {
       ],
     });
   }
+
+  // ngDoCheck() {
+  //   console.log('do check in sign-iupn');
+  // }
 }

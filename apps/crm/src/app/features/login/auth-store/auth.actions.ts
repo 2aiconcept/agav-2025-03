@@ -33,7 +33,7 @@ export const signUpFailure = createAction(
   props<{ error: string }>()
 );
 
-export const signUpSuccess = createAction(
-  '[Auth] Sign Up Success',
-  props<{ accessToken: string; user: string }>()
-);
+// export const signUpSuccess = createAction(
+//   '[Auth] Sign Up Success',
+//   props<{ accessToken: string; user: string }>()
+// );

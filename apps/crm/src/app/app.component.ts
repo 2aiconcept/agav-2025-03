@@ -1,4 +1,9 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  DoCheck,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { UiComponent, VerticalNavbarComponent } from '@monorepo-angular/ui';
 import { NavItems } from '@monorepo-angular/ui';
 import * as moment from 'moment';
@@ -17,8 +22,9 @@ import { AsyncPipe } from '@angular/common';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements DoCheck {
   router = inject(Router);
   store = inject(Store);
   public date = moment().format('DD/MM/YYYY');
@@ -47,5 +53,9 @@ export class AppComponent {
   signOut() {
     this.store.dispatch(AuthActions.logout());
     this.router.navigate(['auth', 'sign-in']);
+  }
+
+  ngDoCheck() {
+    console.log('do check in app');
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, DoCheck } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -38,4 +38,8 @@ export class SignInComponent implements OnInit {
     const credentials = this.form.value;
     this.store.dispatch(AuthActions.login(credentials));
   }
+
+  // ngDoCheck() {
+  //   console.log('do check in sign-in');
+  // }
 }

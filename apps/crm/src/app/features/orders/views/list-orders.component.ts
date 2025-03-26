@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,4 +7,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './list-orders.component.html',
   styleUrl: './list-orders.component.css',
 })
-export class ListOrdersComponent {}
+export class ListOrdersComponent {
+  // ngDoCheck() {
+  //   console.log('do check on orders');
+  // }
+}
