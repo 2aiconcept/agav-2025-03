@@ -26,10 +26,10 @@
   ],
   "orders": [
     {
-      "unitPrice": 500,
+      "unitPrice": 600,
       "nbOfDays": 2,
       "vat": 20,
-      "state": "CANCELED",
+      "state": "OPTION",
       "type": "formation",
       "customer": "Atos",
       "comment": "un commentaire",
