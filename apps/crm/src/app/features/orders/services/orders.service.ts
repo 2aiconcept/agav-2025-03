@@ -23,13 +23,19 @@ export class OrdersService {
     this.collection$ = col;
   }
 
-  // change state order
+  public changeState(item: Order, state: StateOrder): Observable<Order> {
+    // item.state = state;
+    // const obj = {...item};
+    const obj = new Order({ ...item });
+    obj.state = state;
+    return this.updateItem(obj);
+  }
 
-  // update order in collection
+  public updateItem(item: Order): Observable<Order> {
+    return this.http.put<Order>(`${this.url}/orders/${item.id}`, item);
+  }
 
-  // add order in collection
-
-  // delete order in collection
-
-  // get order by id
+  public getItemById(id: string): Observable<Order> {
+    return this.http.get<Order>(`${this.url}/orders/${id}`);
+  }
 }
