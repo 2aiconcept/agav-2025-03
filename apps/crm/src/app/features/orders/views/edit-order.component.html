@@ -1,1 +1,7 @@
-<p>edit-order works!</p>
+<div class="container">
+  <h3>Edit Order</h3>
+  <hr />
+  @if(order$ | async; as item) {
+  <app-form-order [initItem]="item" (submited)="save($event)"></app-form-order>
+  }
+</div>

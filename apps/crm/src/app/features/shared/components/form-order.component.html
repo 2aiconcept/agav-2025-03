@@ -1,0 +1,61 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="type">Type</label>
+    <input formControlName="type" type="text" class="form-control" id="type" />
+  </div>
+
+  <div class="form-group">
+    <label for="customer">customer</label>
+    <input
+      formControlName="customer"
+      type="text"
+      class="form-control"
+      id="customer"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="nbOfDays">nbOfDays</label>
+    <input
+      formControlName="nbOfDays"
+      type="number"
+      class="form-control"
+      id="nbOfDays"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="unitPrice">unitPrice</label>
+    <input
+      formControlName="unitPrice"
+      type="number"
+      class="form-control"
+      id="unitPrice"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="vat">vat</label>
+    <input formControlName="vat" type="number" class="form-control" id="vat" />
+  </div>
+
+  <div class="form-group">
+    <label for="state">state</label>
+    <select formControlName="state" class="form-control" id="state">
+      <option *ngFor="let state of states" [value]="state">
+        {{ state }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">comment</label>
+    <textarea
+      formControlName="comment"
+      class="form-control"
+      id="comment"
+    ></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
