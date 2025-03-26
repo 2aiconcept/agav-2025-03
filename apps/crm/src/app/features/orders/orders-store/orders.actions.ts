@@ -44,7 +44,7 @@ export const updateOrderFailure = createAction(
 // getOrderById (captured by effect)
 export const getOrderById = createAction(
   '[Orders] Get Order By Id',
-  props<{ id: string }>()
+  props<{ id: number }>()
 );
 
 // getOrderByIdSuccess (captured by reducer)
