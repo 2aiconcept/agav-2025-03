@@ -1,14 +1,11 @@
-import { Component, DoCheck } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { OrdersService } from '../services/orders.service';
 
 @Component({
   selector: 'app-list-orders',
-  imports: [CommonModule],
+  imports: [CommonModule, AsyncPipe],
   templateUrl: './list-orders.component.html',
   styleUrl: './list-orders.component.css',
 })
-export class ListOrdersComponent {
-  // ngDoCheck() {
-  //   console.log('do check on orders');
-  // }
-}
+export class ListOrdersComponent {}

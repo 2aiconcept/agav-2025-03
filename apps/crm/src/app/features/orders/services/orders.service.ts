@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from 'apps/crm/src/environment';
+import { environment } from '../../../../environment';
 import { Observable } from 'rxjs';
 import { Order } from '../models/order';
 
@@ -22,4 +22,14 @@ export class OrdersService {
   set collection(col: Observable<Order[]>) {
     this.collection$ = col;
   }
+
+  // change state order
+
+  // update order in collection
+
+  // add order in collection
+
+  // delete order in collection
+
+  // get order by id
 }
