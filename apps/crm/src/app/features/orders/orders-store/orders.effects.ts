@@ -4,12 +4,13 @@ import { Store } from '@ngrx/store';
 import { map, catchError, of, switchMap } from 'rxjs';
 import { OrdersService } from '../services/orders.service';
 import * as OrdersActions from './orders.actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class OrdersEffects {
   private actions$ = inject(Actions);
   private ordersService = inject(OrdersService);
-  //   private router = inject(Router);
+  private router = inject(Router);
   private store = inject(Store);
   orders$ = createEffect(() =>
     this.actions$.pipe(
@@ -70,11 +71,15 @@ export class OrdersEffects {
       ofType(OrdersActions.updateOrder),
       switchMap(({ order }) =>
         this.ordersService.updateItem(order).pipe(
-          map((order) =>
-            OrdersActions.updateOrderSuccess({
+          map((order) => {
+            // récupérer la route actuelle
+            // si route actuelle est /orders => pas de redirection c'est qu'on change un state dans le tableau sur cette page
+            //   si route actuelle !== /orders => redirection vers /orders
+            this.router.navigate(['orders']);
+            return OrdersActions.updateOrderSuccess({
               order,
-            })
-          ),
+            });
+          }),
           catchError((error) =>
             of(OrdersActions.updateOrderFailure({ error: error.message }))
           )
