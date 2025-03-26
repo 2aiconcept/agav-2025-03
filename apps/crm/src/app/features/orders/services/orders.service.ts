@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environment';
 import { Observable } from 'rxjs';
 import { Order } from '../models/order';
+import { StateOrder } from '../enums/state-order';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +36,7 @@ export class OrdersService {
     return this.http.put<Order>(`${this.url}/orders/${item.id}`, item);
   }
 
-  public getItemById(id: string): Observable<Order> {
+  public getItemById(id: number): Observable<Order> {
     return this.http.get<Order>(`${this.url}/orders/${id}`);
   }
 }

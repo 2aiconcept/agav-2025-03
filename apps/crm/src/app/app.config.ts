@@ -12,6 +12,8 @@ import { environment } from '../environment';
 import { provideHttpClient } from '@angular/common/http';
 import { AuthEffects } from './features/login/auth-store/auth.effects';
 import { authReducer } from './features/login/auth-store/auth.reducer';
+import { ordersReducer } from './features/orders/orders-store/orders.reducer';
+import { OrdersEffects } from './features/orders/orders-store/orders.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,8 +22,9 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideStore({
       auth: authReducer,
+      orders: ordersReducer,
     }),
-    provideEffects(AuthEffects),
+    provideEffects(AuthEffects, OrdersEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: environment.production,

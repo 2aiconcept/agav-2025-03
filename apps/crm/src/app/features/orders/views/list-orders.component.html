@@ -1,10 +1,61 @@
-<!-- @if (collection$ | async; as collection) {
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h3>{{ title }}</h3>
+    <button type="button" class="btn btn-primary">Add order</button>
+  </div>
+  <hr />
+</div>
+@if (collection$ | async; as collection) {
+<div>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <td>Customer</td>
+        <td>Type</td>
+        <td>Duration</td>
+        <td>Unit Price</td>
+        <td>Total ex VAT</td>
+        <td>Total inc VAT</td>
+        <td>State</td>
+        <td>Actions</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of collection; track item.id) {
+      <tr [appState]="item.state">
+        <td>{{ item.customer | uppercase }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.nbOfDays }}</td>
+        <td>{{ item.unitPrice | currency }}</td>
+        <td>{{ item | total | currency }}</td>
+        <td>{{ item | total : 'incVat' | currency }}</td>
 
-<table>
-  @for (item of collection; track item.id) {
-  <tr>
-    <td>{{ item.unitPrice }}</td>
-  </tr>
-  }
-</table>
-} -->
+        <td>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            (change)="changeState(item, $event)"
+          >
+            @for (state of states; track $index) {
+            <option [ngValue]="state" [selected]="state === item.state">
+              {{ state }}
+            </option>
+            }
+          </select>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-outline-primary me-3"
+            (click)="goToEdit(item.id)"
+          >
+            Edit
+          </button>
+          <button type="button" class="btn btn-outline-danger">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+}

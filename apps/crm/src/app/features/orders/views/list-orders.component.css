@@ -1,0 +1,13 @@
+.state-canceled {
+  background: #f6a6a644;
+}
+.state-option {
+  background: #fbd28c5a;
+}
+.state-confirmed {
+  background: #aefac53b;
+}
+
+td {
+  background: none;
+}
