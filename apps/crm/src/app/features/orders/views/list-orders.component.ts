@@ -8,10 +8,11 @@ import { Observable } from 'rxjs';
 import { StateOrder } from '../enums/state-order';
 import { Order } from '../models/order';
 import { FormsModule } from '@angular/forms';
+import { StateDirective } from '../../shared/directives/state.directive';
 
 @Component({
   selector: 'app-list-orders',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, StateDirective],
   templateUrl: './list-orders.component.html',
   styleUrl: './list-orders.component.css',
 })
@@ -34,7 +35,7 @@ export class ListOrdersComponent {
     this.store.dispatch(OrdersActions.changeStateOrder({ order: item, state }));
   }
 
-  goToEdit(id: string) {
+  goToEdit(id: number) {
     this.router.navigate(['orders', 'edit', id]);
   }
 }
