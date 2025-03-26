@@ -83,26 +83,26 @@ export class AuthEffects {
     { dispatch: false } // Ne déclenche pas d'action supplémentaire
   );
 
-  reLogin$ = createEffect(
-    () =>
-      of(localStorage.getItem('token')).pipe(
-        tap((token) => {
-          if (token) {
-            try {
-              const user = JSON.parse(localStorage.getItem('user') || '{}');
-              // Dispatch l'action loginSuccess pour remettre les données en mémoire
-              this.store.dispatch(AuthActions.loginSuccess({ user, token }));
-            } catch (e) {
-              console.error(
-                'Erreur lors de la lecture du token ou du user depuis le localStorage :',
-                e
-              );
-            }
-          }
-        })
-      ),
-    { dispatch: false } // On ne déclenche pas une nouvelle action ici
-  );
+  //   reLogin$ = createEffect(
+  //     () =>
+  //       of(localStorage.getItem('token')).pipe(
+  //         tap((token) => {
+  //           if (token) {
+  //             try {
+  //               const user = JSON.parse(localStorage.getItem('user') || '{}');
+  //               // Dispatch l'action loginSuccess pour remettre les données en mémoire
+  //               this.store.dispatch(AuthActions.loginSuccess({ user, token }));
+  //             } catch (e) {
+  //               console.error(
+  //                 'Erreur lors de la lecture du token ou du user depuis le localStorage :',
+  //                 e
+  //               );
+  //             }
+  //           }
+  //         })
+  //       ),
+  //     { dispatch: false } // On ne déclenche pas une nouvelle action ici
+  //   );
 
   logout$ = createEffect(
     () =>
