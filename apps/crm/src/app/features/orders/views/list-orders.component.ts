@@ -39,4 +39,7 @@ export class ListOrdersComponent {
   goToEdit(id: number) {
     this.router.navigate(['orders', 'edit', id]);
   }
+  goToAdd() {
+    this.router.navigate(['orders', 'add']);
+  }
 }

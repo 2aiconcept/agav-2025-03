@@ -87,4 +87,23 @@ export class OrdersEffects {
       )
     )
   );
+
+  addOrder$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(OrdersActions.addOrder),
+      switchMap(({ order }) =>
+        this.ordersService.addItem(order).pipe(
+          map((order) => {
+            this.router.navigate(['orders']);
+            return OrdersActions.addOrderSuccess({
+              order: order,
+            });
+          }),
+          catchError((error) =>
+            of(OrdersActions.addOrderFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
 }

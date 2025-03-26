@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as OrdersActions from '../orders-store/orders.actions';
 import { selectOrderById } from '../orders-store/orders.selectors';

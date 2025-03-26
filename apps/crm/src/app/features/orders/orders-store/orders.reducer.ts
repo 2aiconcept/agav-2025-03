@@ -43,5 +43,16 @@ export const ordersReducer = createReducer(
   on(OrdersActions.getOrderByIdFailure, (state, { error }) => ({
     ...state,
     error,
+  })),
+
+  on(OrdersActions.addOrderSuccess, (state, { order }) => {
+    return {
+      ...state,
+      orders: [...state.orders, order],
+    };
+  }),
+  on(OrdersActions.addOrderFailure, (state, { error }) => ({
+    ...state,
+    error,
   }))
 );

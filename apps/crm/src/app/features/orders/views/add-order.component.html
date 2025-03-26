@@ -1,1 +1,6 @@
-<p>add-order works!</p>
+<div class="container">
+  <h3>Edit Order</h3>
+  <hr />
+
+  <app-form-order [initItem]="item" (submited)="save($event)"></app-form-order>
+</div>

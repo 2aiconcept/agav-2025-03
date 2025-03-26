@@ -58,3 +58,21 @@ export const getOrderByIdFailure = createAction(
   '[Orders] Get Order By Id Failure',
   props<{ error: string }>()
 );
+
+// addOrder (captured by effect to call api)
+export const addOrder = createAction(
+  '[Orders] Add Order',
+  props<{ order: Order }>()
+);
+
+// addOrderSuccess (captured by reducer to modify state)
+export const addOrderSuccess = createAction(
+  '[Orders] Add Order Success',
+  props<{ order: Order }>()
+);
+
+// addOrderFailure captured reducer to modify state
+export const addOrderFailure = createAction(
+  '[Orders] Add Order Failure',
+  props<{ error: string }>()
+);

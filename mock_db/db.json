@@ -44,6 +44,26 @@
       "customer": "Capgemini",
       "comment": "un commentaire",
       "id": 2
+    },
+    {
+      "unitPrice": 450,
+      "nbOfDays": 2,
+      "vat": 20,
+      "state": "OPTION",
+      "type": "formation",
+      "customer": "PLB",
+      "comment": "dfbsdfgbh",
+      "id": 3
+    },
+    {
+      "unitPrice": 450,
+      "nbOfDays": 2,
+      "vat": 20,
+      "state": "OPTION",
+      "type": "formation",
+      "customer": "Atos",
+      "comment": null,
+      "id": 4
     }
   ]
 }

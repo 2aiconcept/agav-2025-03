@@ -39,4 +39,8 @@ export class OrdersService {
   public getItemById(id: number): Observable<Order> {
     return this.http.get<Order>(`${this.url}/orders/${id}`);
   }
+
+  public addItem(item: Order): Observable<Order> {
+    return this.http.post<Order>(`${this.url}/orders`, item);
+  }
 }
