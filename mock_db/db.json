@@ -59,7 +59,7 @@
       "unitPrice": 450,
       "nbOfDays": 2,
       "vat": 20,
-      "state": "OPTION",
+      "state": "CANCELED",
       "type": "formation",
       "customer": "Atos",
       "comment": null,

@@ -32,7 +32,8 @@ export class AppComponent implements DoCheck {
   isAuthenticated$: Observable<boolean> = this.store.select(
     selectIsAuthenticated
   );
-  emailUser$: Observable<string> = this.store.select(selectAuthEmail);
+  emailUser$: Observable<string | undefined> =
+    this.store.select(selectAuthEmail);
   navItems: NavItems[] = [
     {
       route: 'orders',

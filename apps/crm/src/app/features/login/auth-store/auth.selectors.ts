@@ -19,5 +19,5 @@ export const selectIsAuthenticated = createSelector(
 // Sélectionner le token
 export const selectAuthEmail = createSelector(
   selectAuthState, // Sélectionne le state `auth`
-  (authState) => authState.user.email // Retourne uniquement l'email
+  (authState) => authState.user?.email // Retourne uniquement l'email
 );
