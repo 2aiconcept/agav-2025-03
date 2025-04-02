@@ -1,7 +1,11 @@
 <ul class="nav flex-column">
   <li class="nav-item" *ngFor="let item of navItems">
-    <a class="nav-link" [routerLink]="item.route" routerLinkActive="active">{{
-      item.label
-    }}</a>
+    <a
+      class="nav-link"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [attr.data-cy]="'nav-link-' + item.route"
+      >{{ item.label }}</a
+    >
   </li>
 </ul>

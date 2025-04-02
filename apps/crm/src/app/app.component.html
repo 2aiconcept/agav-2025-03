@@ -1,17 +1,25 @@
 <lib-ui title="mon titre">
   <div class="tr-connect">
     @if(isAuthenticated$ | async) {
-    <button type="button" class="btn btn-secondary" (click)="signOut()">
+    <button type="button" class="btn btn-secondary logout" (click)="signOut()">
       Log Out
     </button>
     <hr />
     @if (emailUser$ | async; as emailUser) {
     <span>{{ emailUser }}</span>
     } } @else {
-    <button type="button" class="btn btn-primary me-3" (click)="goToSignIn()">
+    <button
+      type="button"
+      class="btn btn-primary me-3 login"
+      (click)="goToSignIn()"
+    >
       Login
     </button>
-    <button type="button" class="btn btn-secondary" (click)="goToSignUp()">
+    <button
+      type="button"
+      class="btn btn-secondary signup"
+      (click)="goToSignUp()"
+    >
       Sign up
     </button>
     }

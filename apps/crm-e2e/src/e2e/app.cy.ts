@@ -12,11 +12,15 @@ describe('Navbar Auth Buttons', () => {
   });
 
   it('should display "Login" button when not authenticated', () => {
-    cy.contains('Login').should('be.visible');
+    cy.get('button.login').should('be.visible');
   });
 
   it('should display "Sign up" button when not authenticated', () => {
-    cy.contains('Sign up').should('be.visible');
+    cy.get('button.signup').should('be.visible');
+  });
+
+  it('should not display "Log out" button when not authenticated', () => {
+    cy.get('button.logout').should('not.exist');
   });
 
   it('should not display "Login" button when authenticated', () => {
@@ -32,7 +36,7 @@ describe('Navbar Auth Buttons', () => {
     // Recharge la page pour prendre en compte le localStorage
     cy.visit('/');
 
-    cy.contains('Login').should('not.exist');
+    cy.get('button.login').should('not.exist');
   });
 
   it('should not display "Sign up" button when authenticated', () => {
@@ -48,7 +52,23 @@ describe('Navbar Auth Buttons', () => {
     // Recharge la page pour prendre en compte le localStorage
     cy.visit('/');
 
-    cy.contains('Sign up').should('not.exist');
+    cy.get('button.signup').should('not.exist');
+  });
+
+  it('should  display "Log out" button when authenticated', () => {
+    // Simule un utilisateur connecté
+    cy.window().then((win) => {
+      win.localStorage.setItem('token', 'fakeToken123');
+      win.localStorage.setItem(
+        'user',
+        JSON.stringify({ id: 1, email: 'test@test.com' })
+      );
+    });
+
+    // Recharge la page pour prendre en compte le localStorage
+    cy.visit('/');
+
+    cy.get('button.logout').should('be.visible');
   });
 });
 
@@ -59,12 +79,29 @@ describe('Auth navigation', () => {
   });
 
   it('should redirect to /auth/sign-in when clicking "Login"', () => {
-    cy.contains('Login').click();
+    cy.get('button.login').click();
     cy.url().should('include', '/auth/sign-in');
   });
 
   it('should redirect to /auth/sign-up when clicking "Sign Up"', () => {
-    cy.contains('Sign up').click();
+    cy.get('button.signup').click();
     cy.url().should('include', '/auth/sign-up');
+  });
+
+  it('should redirect to /auth/sign-in when clicking "Log out"', () => {
+    // Simule un utilisateur connecté
+    cy.window().then((win) => {
+      win.localStorage.setItem('token', 'fakeToken123');
+      win.localStorage.setItem(
+        'user',
+        JSON.stringify({ id: 1, email: 'test@test.com' })
+      );
+    });
+
+    // Recharge la page pour prendre en compte le localStorage
+    cy.visit('/');
+
+    cy.get('button.logout').click();
+    cy.url().should('include', '/auth/sign-in');
   });
 });
